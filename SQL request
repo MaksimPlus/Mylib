@@ -1,12 +1,12 @@
 create database Shop
-create table products(
+create table Products(
 [Id] int not null,
-[Name] nvarchar(50) not null,
+[Name] nvarchar(100) not null,
 [InStock] nvarchar(20) not null,
 [category_id] int,
 primary key(id)
 )
-insert into products(Id, Name, InStock, category_id) values
+insert into Products(Id, Name, InStock, category_id) values
 (1, 'Телевизор LG', 15, 1),
 (2, 'Iphone 6', 7, 2),
 (3, 'Xiaomi Redmi 10', 5, 2),
@@ -18,11 +18,11 @@ insert into products(Id, Name, InStock, category_id) values
 (9,'Коврик для мыши', 9, 0)
 create table categories(
 [Id] int not null,
-[Name] nvarchar(50) not null,
+[Name] nvarchar(100) not null,
 primary key (Id)
 )
 insert into categories (Id, Name) values
 (1, 'Ноутбуки и телевизоры'),
 (2, 'Смартфоны'),
 (3, 'Товары для дома')
-select products.Name as "Продукты", categories.Name as "Категории" from products, categories where products.category_id=categories.Id
+select products.Name as "Продукты", categories.Name as "Категории" from products left join categories on products.category_id=categories.Id  
